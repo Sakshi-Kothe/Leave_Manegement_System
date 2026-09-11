@@ -1,0 +1,87 @@
+def greet(name):
+    print("hello",name)
+greet("Sakshi")    
+
+def add (a,b):
+    return a+b
+sum =add(10,20)
+print(sum)
+
+#def mutiplication(num1,num2):
+ #   print(num1*num2)
+#multiplication() 
+
+def celsius_to_fahrenheit(c):
+    return(c+9/5)+32
+def fahrenheit_to_celsius(f):
+    return(f32)*5/9
+
+while True:
+    print("\n--.Temperature Converter---")
+    print("1.Celsius to Fahreheit")
+    print("2.Fahreheit to Celsius")
+    print("3.Exit")
+
+    choice=int(input("Enter your choice:"))
+
+    if choice==1:
+        c=float(input("enter celsius:"))
+        print("Fahrenheit:",celsius_to_fahrenheit(c))
+    elif choice==2:
+        f=float(input("Enter Fahrenheit:")) 
+        print("Celsius:",fahrenheit_to_celsius(f))
+    elif choice==3:
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice")   
+
+def Addition(num1,num2):
+    return num1+num2
+def Sub(num1,num2):
+    return num1-num2
+def mul(num1,num2):
+    return num1*num2
+def Div(num1,num2):
+    return num1/num2
+num1=int(input("enter 1st value"))
+num2=int(input("enter 2nd value"))
+choice=input("Enter your choice +,-,*,/:")
+if choice=="+":
+    print("Addition:",Addition(num1,num2))
+
+elif choice=="-":
+    print("Addition:",sub(num1,num2)) 
+elif choice=="*":
+    print("Addition:",mul(num1,num2))   
+elif choice=="/":
+    print("Addition:",Div(num1,num2))   
+else:
+    print("invalid operation") 
+
+marks=[85,90,76,88,95]
+print(marks[0])
+print(marks[2])
+
+for mark in marks:
+    if marks==76:
+     print(mark)
+    else:
+        print("number not exist") 
+
+numbers=[10,20,30]
+numbers.append(40)
+numbers.remove(20)
+
+print(numbers[1])
+print(len(numbers))
+
+arr=[10,20,30,40]
+for a in arr:
+    sum=sum+a
+print(sum)
+
+
+
+
+

@@ -1,0 +1,98 @@
+class Employee:
+    def __init__(self, emp_id, name, total_leaves=20):
+        self.emp_id = emp_id
+        self.name = name
+        self.leave_balance = total_leaves
+        self.leave_requests = []
+
+    def apply_leave(self, days):
+        if days <= 0:
+            print("Invalid number of days.")
+            return
+
+        if days > self.leave_balance:
+            print(f"{self.name} does not have enough leave.")
+            return
+
+        request = LeaveRequest(self, days)
+        self.leave_requests.append(request)
+
+        print(f"{self.name} applied for {days} day(s) leave.")
+
+
+class LeaveRequest:
+    def __init__(self, employee, days):
+        self.employee = employee
+        self.days = days
+        self.status = "Pending"
+
+    def approve(self):
+        if self.status != "Pending":
+            print("Request has already been processed.")
+            return
+
+        if self.days > self.employee.leave_balance:
+            self.status = "Rejected"
+            print("Leave rejected: insufficient leave balance.")
+            return
+
+        self.employee.leave_balance -= self.days
+        self.status = "Approved"
+
+        print(
+            f"Leave approved for {self.employee.name} "
+            f"({self.days} day(s))."
+        )
+
+    def reject(self):
+        if self.status != "Pending":
+            print("Request has already been processed.")
+            return
+
+        self.status = "Rejected"
+
+        print(f"Leave rejected for {self.employee.name}.")
+
+
+class Manager:
+    def __init__(self, name):
+        self.name = name
+
+    def approve_leave(self, request):
+        print(f"\nManager {self.name} is processing the request...")
+        request.approve()
+
+    def reject_leave(self, request):
+        print(f"\nManager {self.name} is processing the request...")
+        request.reject()
+
+
+# -------------------------------
+# Creating employees
+# -------------------------------
+
+employee1 = Employee(101, "Rahul", 20)
+employee2 = Employee(102, "Priya", 15)
+
+manager = Manager("Amit")
+
+
+# -------------------------------
+# Employee applies for leave
+# -------------------------------
+
+employee1.apply_leave(3)
+
+# Get Rahul's leave request
+request1 = employee1.leave_requests[0]
+
+# Manager approves it
+manager.approve_leave(request1)
+
+
+# -------------------------------
+# Check remaining leave
+# -------------------------------
+
+print("\nEmployee:", employee1.name)
+print("Remaining Leave:", employee1.leave_balance)
